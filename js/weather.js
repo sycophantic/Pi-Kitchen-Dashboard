@@ -9,11 +9,11 @@
 
 	// Your Yahoo WOEID code
 	// Find your WOEID code at http://zourbuth.com/tools/woeid/
-	var woeid = 23416998;
+	var woeid = 12761165;
 	
 	// Your temperature unit measurement
 	// This bit is simple, 'c' for Celcius, and 'f' for Fahrenheit
-	var unit = 'c';
+	var unit = 'f';
 
 	// Yahoo! query interval (milliseconds)
 	// Default is every 15 minutes. Be reasonable. Don't query Yahoo every 500ms.
@@ -31,10 +31,11 @@
 		return temp;
 	}
 
-	function fillCurrently(currently) {
+	function fillCurrently(currently, atmosphere) {
 		var icon = $('#currently .icon');
 		var desc = $('#currently .desc');
 		var temp = $('#currently .temp');
+		var humid = $('#currently .humid');
 
 		// Insert the current details. Icons may be changed by editing the icons array.
 		if (icon.length) {
@@ -46,10 +47,14 @@
 		if (temp.length) {
 			temp.html(resolveTemp(currently.temp));
 		}
+		if (humid.length) {
+                	humid.html(atmosphere.humidity);
+                }
 	}
 
 	function fillForecast(day, forecast) {
 		// Choose one of the five forecast cells to fill
+		var currentday = day;
 		var forecastCell = '#forecast' + day + ' ';
 		var day = $(forecastCell + '.day');
 		var icon = $(forecastCell + '.icon');
@@ -59,7 +64,7 @@
 
 		// If this is the first cell, call it "Today" instead of the day of the week
 		if (day.length) {
-			if (day === 1) {
+			if (currentday === 1) {
 				day.html('Today');
 			} else {
 				day.html(forecast.day);
@@ -88,6 +93,17 @@
 		}
 	}
 
+	function fillAstronomy(astronomy) {
+		var sunrise = $('#sunrise');
+		var sunset = $('#sunset');
+		if (sunrise.length) {
+			sunrise.html(astronomy.sunrise);
+		}		
+		if (sunset.length) {
+                        sunset.html(astronomy.sunset);
+                }
+	}
+
 	function queryYahoo() {
 		$.ajax({
 			type: 'GET',
@@ -95,15 +111,16 @@
 			dataType: 'json'
 		}).done(function (result) {
 			// Drill down into the returned data to find the relevant weather information
-			result = result.query.results.channel.item;
+			result = result.query.results.channel;
 
-			fillCurrently(result.condition);
-			fillForecast(1, result.forecast[0]);
-			fillForecast(2, result.forecast[1]);
-			fillForecast(3, result.forecast[2]);
-			fillForecast(4, result.forecast[3]);
-			fillForecast(5, result.forecast[4]);
-			fillLinks(result.link);
+			fillCurrently(result.item.condition, result.atmosphere);
+			fillForecast(1, result.item.forecast[0]);
+			fillForecast(2, result.item.forecast[1]);
+			fillForecast(3, result.item.forecast[2]);
+			fillForecast(4, result.item.forecast[3]);
+			fillForecast(5, result.item.forecast[4]);
+			fillLinks(result.item.link);
+			fillAstronomy(result.astronomy); 
 		});
 	}
 

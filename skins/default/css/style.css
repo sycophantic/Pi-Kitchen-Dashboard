@@ -95,6 +95,12 @@ font-size: 3vmin;
 .temp {
  font-size: 15vmin;
 }
+.humid {
+ font-size: 15vmin;
+}
+.lable {
+ font-size: 15vmin;
+}
 #currentlyHeading {
 font-size: 5vmin;
 }
