@@ -87,7 +87,8 @@
 								<div id="currentlyWrapper">
 									<div class="icon"></div>
 									<div class="desc"></div>
-									<div class="currentTemp">Temperature / Humidity:<br /><span class="temp"></span><span class="lable">F&nbsp</span><span class="humid"></span><span class="lable">%</span></div>
+									<div class="currentTemp">Temperature / Humidity:<br /><span class="temp"></span><span class="label">F&nbsp(<span id="chill"></span>F)&nbsp</span><span class="humid"></span><span class="label">%</span></div>
+									
 								</div>
 							</a>
 						</td>
@@ -95,7 +96,8 @@
 							<!-- Current date and time information -->
 							<div id="time"></div>
 							<div id="date"></div>
-							Sunrise: <span id="sunrise"></span> Sunset: <span id ="sunset"></span>
+							<div id="location">Sunrise: <span id="sunrise"></span> Sunset: <span id="sunset"></span></div>
+							<div id="location"><span id="city"></span>,&nbsp<span id="state"></span></div>
 						</td>
 					</tr>
 					<tr>
@@ -105,8 +107,7 @@
 								<div class="day"></div>
 								<div class="icon"></div>
 								<div class="desc"></div>
-								<div class="highTemp">High: <span class="high"></span></div>
-								<div class="lowTemp">Low: <span class="low"></span></div>
+								<div class="highTemp"><span class="high"></span>&nbsp/&nbsp<span class="low"></span></div>
 							</a>
 						</td>
 						<td class="forecast" id="forecast2">
@@ -114,8 +115,7 @@
 								<div class="day"></div>
 								<div class="icon"></div>
 								<div class="desc"></div>
-								<div class="highTemp">High: <span class="high"></span></div>
-								<div class="lowTemp">Low: <span class="low"></span></div>
+								<div class="highTemp"><span class="high"></span>&nbsp/&nbsp<span class="low"></span></div>
 							</a>
 						</td>
 						<td class="forecast" id="forecast3">
@@ -123,8 +123,7 @@
 								<div class="day"></div>
 								<div class="icon"></div>
 								<div class="desc"></div>
-								<div class="highTemp">High: <span class="high"></span></div>
-								<div class="lowTemp">Low: <span class="low"></span></div>
+								<div class="highTemp"><span class="high"></span>&nbsp/&nbsp<span class="low"></span></div>
 							</a>
 						</td>
 						<td class="forecast" id="forecast4">
@@ -132,8 +131,7 @@
 								<div class="day"></div>
 								<div class="icon"></div>
 								<div class="desc"></div>
-								<div class="highTemp">High: <span class="high"></span></div>
-								<div class="lowTemp">Low: <span class="low"></span></div>
+								<div class="highTemp"><span class="high"></span>&nbsp/&nbsp<span class="low"></span></div>
 							</a>
 						</td>
 						<td class="forecast" id="forecast5">
@@ -141,8 +139,7 @@
 								<div class="day"></div>
 								<div class="icon"></div>
 								<div class="desc"></div>
-								<div class="highTemp">High: <span class="high"></span></div>
-								<div class="lowTemp">Low: <span class="low"></span></div>
+								<div class="highTemp"><span class="high"></span>&nbsp/&nbsp<span class="low"></span></div>
 							</a>
 						</td>
 					</tr>

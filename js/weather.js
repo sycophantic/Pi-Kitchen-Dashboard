@@ -104,6 +104,21 @@
                 }
 	}
 
+	function fillOther(wind, location) {
+		var chill = $('#chill');
+		var city = $('#city');
+		var state = $('#state');
+                if (chill.length) {
+                        chill.html(wind.chill);
+                }
+		if (city.length) {
+			city.html(location.city);
+		}
+		if (state.length) {
+                        state.html(location.region);
+                }
+	}
+
 	function queryYahoo() {
 		$.ajax({
 			type: 'GET',
@@ -121,6 +136,7 @@
 			fillForecast(5, result.item.forecast[4]);
 			fillLinks(result.item.link);
 			fillAstronomy(result.astronomy); 
+			fillOther(result.wind, result.location);
 		});
 	}
 
