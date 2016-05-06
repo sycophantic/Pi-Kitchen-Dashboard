@@ -28,7 +28,7 @@ GPIO.add_event_detect(24, GPIO.RISING, callback=motion, bouncetime=300)
 
 while True:
   time.sleep(1)
-  if time.time() - oldtime > 5:
+  if time.time() - oldtime > 600:
     if(screen):
       print "turning screen off"
       GPIO.output(23, 0)
